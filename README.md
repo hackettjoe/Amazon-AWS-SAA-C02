@@ -1,7 +1,7 @@
 # My SAA-C02 Notes
 > These are my personal notes from AWS Documentation and a Udemy course.
 I would highly recommend this course by Stephane
-[aws-sa-associate-saac02](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c02/)>.
+[aws-sa-associate-saac02](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c02/).
 
 ## Table of Contents
 
