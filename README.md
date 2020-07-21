@@ -1,31 +1,31 @@
 # My SAA-C02 Notes
 > These are my personal notes from AWS Documentation and a Udemy course.
 I would highly recommend this course by Stephane
-[aws-sa-associate-saac02](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c02/).>
+[aws-sa-associate-saac02](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c02/)>.
 
 ## Table of Contents
 
-- [AWS Infrastructure(#AWS Infrastructure)
-- [IAM-Accounts-AWS-Organizations](#IAM-Accounts-AWS-Organizations)
-- [Amazon S3](#Amazon S3)
-- [Virtual-Private-Cloud-VPC](#Virtual-Private-Cloud-VPC)
-- [Elastic-Cloud-Compute-EC2](#Elastic-Cloud-Compute-EC2)
+- [AWS-Infrastructure](#AWS-Infrastructure)
+- [IAM-Accounts-Organizations](#IAM-Accounts-Organizations)
+- [Amazon-S3](#Amazon-S3)
+- [VPC](#VPC)
+- [EC2](#EC2)
 - [Containers](#Containers)
-- [Additional EC2 Info](#Additional EC2 Info)
-- [Route-53](#Route-53)
-- [Relational-Database-Service-RDS](#Relational-Database-Service-RDS)
+- [Additional-EC2-Info](#Additional-EC2-Info)
+- [Route53](#Route53)
+- [Amazon-RDS](#Amazon-RDS)
 - [Network-Storage-EFS](#Network-Storage-EFS)
-- [HA-and-Scaling](#HA-and-Scaling)
-- [Serverless Services](#Serverless Services)
-- [CDN and Network Optimization](#CDN and Network Optimization)
-- [Other VPC Topics](#Other VPC Topics)
+- [HA-Scale](#HA-Scale)
+- [Serverless-Services](#Serverless-Services)
+- [CDN-Network-Optimization](#CDN-Network-Optimization)
+- [Other-VPC-Topics](#Other-VPC-Topics)
 - [Migration](#Migration)
-- [Security Operations](#Security Operations)
+- [Security-Operations](#Security-Operations)
 - [DynamoDB](#DynamoDB)
 
 ---
 
-## AWS Infrastructure
+## AWS-Infrastructure
 
 ### [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/?p=ngi&loc=1)
 
@@ -48,7 +48,7 @@ AWS maintains multiple geographic Regions, including Regions in North America, S
 
 #### Availability Zones
 
-An Availability Zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity in an AWS Region. All AZ’s in an AWS Region are interconnected with high-bandwidth, low-latency networking, over fully redundant, dedicated metro fiber providing high-throughput, low-latency networking between AZ’s. All traffic between AZ’s is encrypted. AZ’s are physically separated by a meaningful distance, many kilometers, from any other AZ, although all are within 100 km (60 miles) of each other.
+An Availability Zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity in an AWS Region. All AZâ€™s in an AWS Region are interconnected with high-bandwidth, low-latency networking, over fully redundant, dedicated metro fiber providing high-throughput, low-latency networking between AZâ€™s. All traffic between AZâ€™s is encrypted. AZâ€™s are physically separated by a meaningful distance, many kilometers, from any other AZ, although all are within 100 km (60 miles) of each other.
 
 Each region has many AZ's, usually 3 AZ's in each region (minimum of 2, maximum of 6).
 
@@ -69,7 +69,7 @@ Use Cases: Media & Entertainment Content Creation, Real-time Multiplayer Gaming,
 
 ---
 
-## IAM-Accounts-AWS-Organizations
+## IAM-Accounts-Organizations
 
 ### AWS IAM
 
@@ -135,7 +135,7 @@ The parent container for all the accounts for your organization. If you apply a 
 
 ### Service Control Policies
 
-Service control policies (SCPs) are a type of organization policy that you can use to manage permissions in your organization. SCPs offer central control over the maximum available permissions for all accounts in your organization. SCPs help you to ensure your accounts stay within your organization’s access control guidelines. 
+Service control policies (SCPs) are a type of organization policy that you can use to manage permissions in your organization. SCPs offer central control over the maximum available permissions for all accounts in your organization. SCPs help you to ensure your accounts stay within your organizationâ€™s access control guidelines. 
 
 SCPs are similar to AWS Identity and Access Management (IAM) permission policies and use almost the same syntax. However, an SCP never grants permissions. Instead, SCPs are JSON policies that specify the maximum permissions for an organization or organizational unit (OU). 
 - SCPs affect only principals that are managed by accounts that are part of the organization.
@@ -145,7 +145,7 @@ SCPs are similar to AWS Identity and Access Management (IAM) permission policies
 
 ---
 
-## Amazon S3
+## Amazon-S3
 
 ### S3 Overview
 
@@ -190,7 +190,7 @@ You can optionally add another layer of security by configuring a bucket to enab
 
 #### S3 Transfer Acceleration
 
-Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFront’s globally distributed edge locations. As the data arrives at an edge location, data is routed to Amazon S3 over an optimized network path.
+Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFrontâ€™s globally distributed edge locations. As the data arrives at an edge location, data is routed to Amazon S3 over an optimized network path.
 
 Use Cases
 - You have customers that upload to a centralized bucket from all over the world
@@ -268,8 +268,8 @@ Retrieval methods:
 #### S3 Lifecycle Management
 
 To manage your objects so that they are stored cost effectively throughout their lifecycle, configure their Amazon S3 Lifecycle.
-- Transition actions — Define when objects transition to another storage class. For example, you might choose to transition objects to the S3 Standard-IA storage class 30 days after you created them, or archive objects to the S3 Glacier storage class one year after creating them.
-- Expiration actions — Define when objects expire. Amazon S3 deletes expired objects on your behalf.
+- Transition actions â€” Define when objects transition to another storage class. For example, you might choose to transition objects to the S3 Standard-IA storage class 30 days after you created them, or archive objects to the S3 Glacier storage class one year after creating them.
+- Expiration actions â€” Define when objects expire. Amazon S3 deletes expired objects on your behalf.
 
 Use Cases:
 - If you upload periodic logs to a bucket, your application might need them for a week or a month. After that, you might want to delete them.
@@ -308,7 +308,7 @@ Use Cases:
 
 ---
 
-## Virtual-Private-Cloud-VPC
+## VPC
 
 ### Networking Refresher
 
@@ -322,7 +322,7 @@ These IP's cannot communicate with the internet directly.
 
 You can have multiple VPC's in a region (max = 5)
 
-Amazon VPC supports IPv4 and IPv6 addressing, and has different CIDR block size quotas for each. By default, all VPCs and subnets must have IPv4 CIDR blocks—you can't change this behavior. You can optionally associate an IPv6 CIDR block with your VPC.
+Amazon VPC supports IPv4 and IPv6 addressing, and has different CIDR block size quotas for each. By default, all VPCs and subnets must have IPv4 CIDR blocksâ€”you can't change this behavior. You can optionally associate an IPv6 CIDR block with your VPC.
 
 MAx CIDR per VPC is 5 but for each VPC:
 - min size is /28 = 16 IP addresses
@@ -401,7 +401,7 @@ You can establish peering relationships between VPCs across different AWS Region
 
 ---
 
-## Elastic-Cloud-Compute-EC2
+## EC2
 
 Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the AWS cloud. Simply put, it's IaaS.
 
@@ -542,26 +542,26 @@ An Amazon Machine Image (AMI) is a template that contains a software configurati
 ### EC2 Pricing Models
 
 Amazon EC2 provides the following purchasing options to enable you to optimize your costs based on your needs:
-- On-Demand Instances – Pay, by the second, for the instances that you launch. No long-term commitment required. 
-- Savings Plans – Reduce your Amazon EC2 costs by making a commitment to a consistent amount of usage, in USD per hour, for a term of 1 or 3 years.
-- Reserved Instances – Reduce your Amazon EC2 costs by making a commitment to a consistent instance configuration, including instance type and Region, for a term of 1 or 3 years.
+- On-Demand Instances â€“ Pay, by the second, for the instances that you launch. No long-term commitment required. 
+- Savings Plans â€“ Reduce your Amazon EC2 costs by making a commitment to a consistent amount of usage, in USD per hour, for a term of 1 or 3 years.
+- Reserved Instances â€“ Reduce your Amazon EC2 costs by making a commitment to a consistent instance configuration, including instance type and Region, for a term of 1 or 3 years.
   - Standard: These provide the most significant discount, but can only be modified.
   - Convertible: These provide a lower discount than Standard Reserved Instances, but can be exchanged for another Convertible Reserved Instance with different instance attributes. Convertible Reserved Instances can also be modified.
-- Scheduled Instances – Purchase instances that are always available on the specified recurring schedule, for a one-year term.
+- Scheduled Instances â€“ Purchase instances that are always available on the specified recurring schedule, for a one-year term.
   - Scheduled Reserved Instances (Scheduled Instances) enable you to purchase capacity reservations that recur on a daily, weekly, or monthly basis, with a specified start time and duration, for a one-year term.
-- Spot Instances – Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly.
+- Spot Instances â€“ Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly.
   - is an unused EC2 instance that is available for less than the On-Demand price
   - runs whenever capacity is available and the maximum price per hour for your request exceeds the Spot price
   - are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted (batch jobs, data analysis apps)
-  - Spot Fleet – A set of Spot Instances that is launched based on criteria that you specify. The Spot Fleet selects the Spot Instance pools that meet your needs and launches Spot Instances to meet the target capacity for the fleet. By default, Spot Fleets are set to maintain target capacity by launching replacement instances after Spot Instances in the fleet are terminated. You can submit a Spot Fleet as a one-time request, which does not persist after the instances have been terminated. You can include On-Demand Instance requests in a Spot Fleet request.
+  - Spot Fleet â€“ A set of Spot Instances that is launched based on criteria that you specify. The Spot Fleet selects the Spot Instance pools that meet your needs and launches Spot Instances to meet the target capacity for the fleet. By default, Spot Fleets are set to maintain target capacity by launching replacement instances after Spot Instances in the fleet are terminated. You can submit a Spot Fleet as a one-time request, which does not persist after the instances have been terminated. You can include On-Demand Instance requests in a Spot Fleet request.
   - recommended for stateless, fault-tolerant, flexible applications (stateless web servers, container workloads, rendering, big data)
-- Dedicated Hosts – Pay for a physical host that is fully dedicated to running your instances, and bring your existing per-socket, per-core, or per-VM software licenses to reduce costs.
+- Dedicated Hosts â€“ Pay for a physical host that is fully dedicated to running your instances, and bring your existing per-socket, per-core, or per-VM software licenses to reduce costs.
   - BYOL model
   - allow you to use your existing per-socket, per-core, or per-VM software licenses
   - you get to control the placement of your instances you place onto the Dedicated Host
-- Dedicated Instances – Pay, by the hour, for instances that run on single-tenant hardware.
+- Dedicated Instances â€“ Pay, by the hour, for instances that run on single-tenant hardware.
   - instances that run in a virtual private cloud (VPC) on hardware that's dedicated to a single customer
-- Capacity Reservations – Reserve capacity for your EC2 instances in a specific Availability Zone for any duration.
+- Capacity Reservations â€“ Reserve capacity for your EC2 instances in a specific Availability Zone for any duration.
 
 ### Instance Metadata
 
@@ -600,7 +600,7 @@ Clusters are Region-specific. A cluster may contain a mix of both Auto Scaling g
 
 ---
 
-## Additional EC2 Info
+## Additional-EC2-Info
 
 ### AWS System Manager Parameter Store
 
@@ -640,13 +640,13 @@ Detailed monitoring
 
 When you launch a new EC2 instance, the EC2 service attempts to place the instance in such a way that all of your instances are spread out across underlying hardware to minimize correlated failures. You can use placement groups to influence the placement of a group of interdependent instances to meet the needs of your workload. Depending on the type of workload, you can create a placement group using one of the following placement strategies:
 
-1. Cluster – packs instances close together inside an Availability Zone. This strategy enables workloads to achieve the low-latency network performance necessary for tightly-coupled node-to-node communication that is typical of HPC applications.
+1. Cluster â€“ packs instances close together inside an Availability Zone. This strategy enables workloads to achieve the low-latency network performance necessary for tightly-coupled node-to-node communication that is typical of HPC applications.
 - Cluster placement groups are recommended for applications that benefit from low network latency, high network throughput, or both. They are also recommended when the majority of the network traffic is between the instances in the group.
 
-2. Partition – spreads your instances across logical partitions such that groups of instances in one partition do not share the underlying hardware with groups of instances in different partitions. This strategy is typically used by large distributed and replicated workloads, such as Hadoop, Cassandra, and Kafka.
+2. Partition â€“ spreads your instances across logical partitions such that groups of instances in one partition do not share the underlying hardware with groups of instances in different partitions. This strategy is typically used by large distributed and replicated workloads, such as Hadoop, Cassandra, and Kafka.
 - Partition placement groups can be used to deploy large distributed and replicated workloads, such as HDFS, HBase, and Cassandra, across distinct racks.
 
-3. Spread – strictly places a small group of instances across distinct underlying hardware to reduce correlated failures.
+3. Spread â€“ strictly places a small group of instances across distinct underlying hardware to reduce correlated failures.
 - Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other. 
 
 ### Enhanced Networking
@@ -655,7 +655,7 @@ Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high
 
 ---
 
-## Route-53
+## Route53
 
 ### Overview
 
@@ -668,7 +668,7 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 
 An overview of the concepts that are related to Amazon Route 53 health checking:
 - DNS failover
-  - A method for routing traffic away from unhealthy resources and to healthy resources. When you have more than one resource performing the same function—for example, more than one web server or mail server—you can configure Route 53 health checks to check the health of your resources and configure records in your hosted zone to route traffic only to healthy resources.
+  - A method for routing traffic away from unhealthy resources and to healthy resources. When you have more than one resource performing the same functionâ€”for example, more than one web server or mail serverâ€”you can configure Route 53 health checks to check the health of your resources and configure records in your hosted zone to route traffic only to healthy resources.
 
 - Endpoint
   - The resource, such as a web server or an email server, that you configure a health check to monitor the health of. You can specify an endpoint by IPv4 address (192.0.2.243), by IPv6 address (2001:0db8:85a3:0000:0000:abcd:0001:2345), or by domain name (example.com).
@@ -691,32 +691,32 @@ You can create three types of Amazon Route 53 health checks:
 
 ### Route 53 Routing Policies 
 
-- Simple routing policy – Use for a single resource that performs a given function for your domain, for example, a web server that serves content for the example.com website.
+- Simple routing policy â€“ Use for a single resource that performs a given function for your domain, for example, a web server that serves content for the example.com website.
   - Simple routing lets you configure standard DNS records, with no special Route 53 routing such as weighted or latency. With simple routing, you typically route traffic to a single resource, for example, to a web server for your website.
-- Failover routing policy – Use when you want to configure active-passive failover.
+- Failover routing policy â€“ Use when you want to configure active-passive failover.
   - Failover routing lets you route traffic to a resource when the resource is healthy or to a different resource when the first resource is unhealthy. The primary and secondary records can route traffic to anything from an Amazon S3 bucket that is configured as a website to a complex tree of records.
-- Geolocation routing policy – Use when you want to route traffic based on the location of your users.
+- Geolocation routing policy â€“ Use when you want to route traffic based on the location of your users.
   - Geolocation routing lets you choose the resources that serve your traffic based on the geographic location of your users
   - You can also use geolocation routing to restrict distribution of content to only the locations in which you have distribution rights. 
   - can specify geographic locations by continent, by country, or by state in the United States
   - Geolocation works by mapping IP addresses to locations
-- Geoproximity routing policy (traffic flow only) – Use when you want to route traffic based on the location of your resources and, optionally, shift traffic from resources in one location to resources in another.
+- Geoproximity routing policy (traffic flow only) â€“ Use when you want to route traffic based on the location of your resources and, optionally, shift traffic from resources in one location to resources in another.
   - lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources
   - To use geoproximity routing, you must use Route 53 traffic flow
   - You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.
-- Latency routing policy – Use when you have resources in multiple AWS Regions and you want to route traffic to the region that provides the best latency.
+- Latency routing policy â€“ Use when you have resources in multiple AWS Regions and you want to route traffic to the region that provides the best latency.
   - To use latency-based routing, you create latency records for your resources in multiple AWS Regions
   - Latency-based routing is based on latency measurements performed over a period of time
-- Multivalue answer routing policy – Use when you want Route 53 to respond to DNS queries with up to eight healthy records selected at random.
+- Multivalue answer routing policy â€“ Use when you want Route 53 to respond to DNS queries with up to eight healthy records selected at random.
   - lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries
   - multivalue answer routing also lets you check the health of each resource, so Route 53 returns only values for healthy resources
-- Weighted routing policy – Use to route traffic to multiple resources in proportions that you specify.
+- Weighted routing policy â€“ Use to route traffic to multiple resources in proportions that you specify.
   - lets you associate multiple resources with a single domain name (example.com) or subdomain name (acme.example.com) and choose how much traffic is routed to each resource
   - use for load balancing and testing new software versions (A/B testing, green/blue deployment)
 
 ---
 
-## Relational-Database-Service-RDS
+## Amazon-RDS
 
 ### Relational Database Service (RDS)
 
@@ -795,7 +795,7 @@ The Aurora cluster in the primary AWS Region where your data is mastered perform
 AWS Database Migration Service helps you migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database. The AWS Database Migration Service can migrate your data to and from most widely used commercial and open-source databases.
 - supports homogeneous migrations such as Oracle to Oracle, as well as heterogeneous migrations between different database platforms, such as Oracle or Microsoft SQL Server to Amazon Aurora
 - Migrations can be from on-premises databases to Amazon RDS or Amazon EC2, databases running on EC2 to RDS
-- highly resilient and self–healing
+- highly resilient and selfâ€“healing
 - All data changes to the source database that occur during the migration are continuously replicated to the target
 
 ---
@@ -812,7 +812,7 @@ Amazon Elastic File System (Amazon EFS) provides a simple, scalable, fully manag
 
 ---
 
-## HA-and-Scaling
+## HA-Scale
 
 ### Elastic Load Balancing (ELB) 
 
@@ -860,9 +860,9 @@ Key components:
 
 A scaling policy instructs Amazon EC2 Auto Scaling to track a specific CloudWatch metric, and it defines what action to take when the associated CloudWatch alarm is in ALARM. When a scaling policy is executed, if the capacity calculation produces a number outside of the minimum and maximum size range of the group, Amazon EC2 Auto Scaling ensures that the new capacity never goes outside of the minimum and maximum size limits. Capacity is measured in one of two ways: using the same units that you chose when you set the desired capacity in terms of instances, or using capacity units. 
 
-- Target tracking scaling — Increase or decrease the current capacity of the group based on a target value for a specific metric. This is similar to the way that your thermostat maintains the temperature of your home—you select a temperature and the thermostat does the rest.
-- Step scaling — Increase or decrease the current capacity of the group based on a set of scaling adjustments, known as step adjustments, that vary based on the size of the alarm breach.
-- Simple scaling — Increase or decrease the current capacity of the group based on a single scaling adjustment.
+- Target tracking scaling â€” Increase or decrease the current capacity of the group based on a target value for a specific metric. This is similar to the way that your thermostat maintains the temperature of your homeâ€”you select a temperature and the thermostat does the rest.
+- Step scaling â€” Increase or decrease the current capacity of the group based on a set of scaling adjustments, known as step adjustments, that vary based on the size of the alarm breach.
+- Simple scaling â€” Increase or decrease the current capacity of the group based on a single scaling adjustment.
 
 ### Network Load Balancer (NLB)
 
@@ -888,7 +888,7 @@ The load balancer uses a special cookie, AWSELB, to track the instance for each 
 
 ---
 
-## Serverless Services 
+## Serverless-Services 
 
 ### AWS Lambda
 
@@ -942,7 +942,7 @@ Amazon API Gateway is an AWS service for creating, publishing, maintaining, moni
 
 ### Simple Notification Service (SNS)
 
-Amazon Simple Notification Service (Amazon SNS) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients. In Amazon SNS, there are two types of clients—publishers and subscribers—also referred to as producers and consumers.
+Amazon Simple Notification Service (Amazon SNS) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients. In Amazon SNS, there are two types of clientsâ€”publishers and subscribersâ€”also referred to as producers and consumers.
 
 Common scenarios:
 1. Fanout - The "fanout" scenario is when an Amazon SNS message is sent to a topic and then replicated and pushed to multiple Amazon SQS queues, HTTP endpoints, or email addresses. 
@@ -998,7 +998,7 @@ SQS
 
 ---
 
-## CDN and Network Optimization
+## CDN-Network-Optimization
 
 ### CloudFront
 
@@ -1017,7 +1017,7 @@ When you first set up an Amazon S3 bucket as the origin for a CloudFront distrib
 
 To restrict access to content that you serve from Amazon S3 buckets, follow these steps:
 1. Create a special CloudFront user called an origin access identity (OAI) and associate it with your distribution.
-2. Configure your S3 bucket permissions so that CloudFront can use the OAI to access the files in your bucket and serve them to your users. Make sure that users can’t use a direct URL to the S3 bucket to access a file there.
+2. Configure your S3 bucket permissions so that CloudFront can use the OAI to access the files in your bucket and serve them to your users. Make sure that users canâ€™t use a direct URL to the S3 bucket to access a file there.
 
 ### AWS Global Accelerator
 
@@ -1036,7 +1036,7 @@ Endpoints can be Network Load Balancers, Application Load Balancers, EC2 instanc
 
 ---
 
-## Other VPC Topics
+## Other-VPC-Topics
 
 ### VPC Flow Logs
 
@@ -1067,11 +1067,11 @@ A VPC endpoint enables you to privately connect your VPC to supported AWS servic
 Endpoints are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between instances in your VPC and services without imposing availability risks or bandwidth constraints on your network traffic.
 
 Key concepts:
-- Endpoint service — Your own application in your VPC. Other AWS principals can create a connection from their VPC to your endpoint service
-- Gateway endpoint — A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service.
+- Endpoint service â€” Your own application in your VPC. Other AWS principals can create a connection from their VPC to your endpoint service
+- Gateway endpoint â€” A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service.
   - S3 
   - DynamoDB
-- Interface endpoint — An interface endpoint is an elastic network interface (ENI) with a private IP address from the IP address range of your subnet that serves as an entry point for traffic destined to a supported service.
+- Interface endpoint â€” An interface endpoint is an elastic network interface (ENI) with a private IP address from the IP address range of your subnet that serves as an entry point for traffic destined to a supported service.
   - powered by AWS PrivateLink (restricts all network traffic between your VPC and services to the Amazon network)
   - LOTS of [AWS services](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html) are supported
 
@@ -1116,16 +1116,16 @@ There are 2 types of connections:
 
 AWS Storage Gateway connects an on-premises software appliance with cloud-based storage to provide seamless integration with data security features between your on-premises IT environment and the AWS storage infrastructure. You can use the service to store data in the AWS Cloud for scalable and cost-effective storage that helps maintain data security.
 
-**File Gateway** – A file gateway supports a file interface into Amazon Simple Storage Service (Amazon S3) and combines a service and a virtual software appliance.
+**File Gateway** â€“ A file gateway supports a file interface into Amazon Simple Storage Service (Amazon S3) and combines a service and a virtual software appliance.
 - NFS and SMB
 - can access your data directly in Amazon S3, including using lifecycle policies, cross-region replication, and versioning
 
-**Volume Gateway** – A volume gateway provides cloud-backed storage volumes that you can mount as Internet Small Computer System Interface (iSCSI) devices from your on-premises application servers.
+**Volume Gateway** â€“ A volume gateway provides cloud-backed storage volumes that you can mount as Internet Small Computer System Interface (iSCSI) devices from your on-premises application servers.
 - deployed into your on-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper-V
-  - Cached volumes – You store your data in Amazon Simple Storage Service (Amazon S3) and retain a copy of frequently accessed data subsets locally.
-  - Stored volumes – If you need low-latency access to your entire dataset, first configure your on-premises gateway to store all your data locally.
+  - Cached volumes â€“ You store your data in Amazon Simple Storage Service (Amazon S3) and retain a copy of frequently accessed data subsets locally.
+  - Stored volumes â€“ If you need low-latency access to your entire dataset, first configure your on-premises gateway to store all your data locally.
 
-**Tape Gateway** – A tape gateway provides cloud-backed virtual tape storage. The tape gateway is deployed into your on-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper-V hypervisor.
+**Tape Gateway** â€“ A tape gateway provides cloud-backed virtual tape storage. The tape gateway is deployed into your on-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper-V hypervisor.
 - archive backup data in GLACIER or DEEP_ARCHIVE
 - can run on-premises as a VM appliance, as a hardware appliance, or in AWS as an Amazon EC2 instance
 
@@ -1142,17 +1142,17 @@ The AWS Snowball service uses physical storage devices to transfer large amounts
 
 #### Snowball Edge
 
-The AWS Snowball Edge is a type of Snowball device with on-board storage and compute power for select AWS capabilities. Snowball Edge can undertake local processing and edge-computing workloads in addition to transferring data between your local environment and the AWS Cloud. Snowball Edge devices have three options for device configurations – storage optimized, compute optimized, and with GPU. 
+The AWS Snowball Edge is a type of Snowball device with on-board storage and compute power for select AWS capabilities. Snowball Edge can undertake local processing and edge-computing workloads in addition to transferring data between your local environment and the AWS Cloud. Snowball Edge devices have three options for device configurations â€“ storage optimized, compute optimized, and with GPU. 
 - transfer speeds of up to 100 GB/second
 - can import or export data between your local environments and Amazon S3, physically transporting the data with one or more devices, completely bypassing the internet
 - read/write data using NFS mount point
 - have Amazon S3 and Amazon EC2 compatible endpoints available
 
 Device options:
-- Snowball Edge Storage Optimized (for data transfer) – This Snowball Edge device option has a 100 TB (80 TB usable) storage capacity.
-- Snowball Edge Storage Optimized (with EC2 compute functionality) – This Snowball Edge device option has up to 80 TB of usable storage space, 24 vCPUs, and 32 GiB of memory for compute functionality. It also comes with 1 TB of additional SSD storage space for block volumes attached to Amazon EC2 AMIs.
-- Snowball Edge Compute Optimized – This Snowball Edge device option has the most compute functionality, with 52 vCPUs, 208 GiB of memory, and 42 TB (39.5 usable) plus 7.68 TB of dedicated NVMe SSD for compute instances for block storage volumes for EC2 compute instances, and 42 TB of HDD capacity for either object storage or block storage volumes.
-- Snowball Edge Compute Optimized with GPU – This Snowball Edge device option is identical to the compute optimized option, save for an installed GPU, equivalent to the one available in the P3 Amazon EC2 instance type. It has a storage capacity of 42 TB (39.5 TB of HDD storage that can be used for a combination of Amazon S3 compatible object storage and Amazon EBS compatible block storage volumes) plus 7.68 TB of dedicated NVMe SSD for compute instances.
+- Snowball Edge Storage Optimized (for data transfer) â€“ This Snowball Edge device option has a 100 TB (80 TB usable) storage capacity.
+- Snowball Edge Storage Optimized (with EC2 compute functionality) â€“ This Snowball Edge device option has up to 80 TB of usable storage space, 24 vCPUs, and 32 GiB of memory for compute functionality. It also comes with 1 TB of additional SSD storage space for block volumes attached to Amazon EC2 AMIs.
+- Snowball Edge Compute Optimized â€“ This Snowball Edge device option has the most compute functionality, with 52 vCPUs, 208 GiB of memory, and 42 TB (39.5 usable) plus 7.68 TB of dedicated NVMe SSD for compute instances for block storage volumes for EC2 compute instances, and 42 TB of HDD capacity for either object storage or block storage volumes.
+- Snowball Edge Compute Optimized with GPU â€“ This Snowball Edge device option is identical to the compute optimized option, save for an installed GPU, equivalent to the one available in the P3 Amazon EC2 instance type. It has a storage capacity of 42 TB (39.5 TB of HDD storage that can be used for a combination of Amazon S3 compatible object storage and Amazon EBS compatible block storage volumes) plus 7.68 TB of dedicated NVMe SSD for compute instances.
 
 #### Snowmobile
 
@@ -1162,14 +1162,14 @@ AWS Snowmobile is an Exabyte-scale data transfer service used to move extremely 
 ### AWS Directory Service
 
 AWS Directory Service provides multiple ways to use Microsoft Active Directory (AD) with other AWS services. 
-- Microsoft AD or Lightweight Directory Access Protocol (LDAP)–aware applications
-- use if you need an actual Microsoft Active Directory in the AWS Cloud that supports Active Directory–aware workloads, or AWS applications and services such as Amazon WorkSpaces and Amazon QuickSight, or you need LDAP support for Linux applications.
+- Microsoft AD or Lightweight Directory Access Protocol (LDAP)â€“aware applications
+- use if you need an actual Microsoft Active Directory in the AWS Cloud that supports Active Directoryâ€“aware workloads, or AWS applications and services such as Amazon WorkSpaces and Amazon QuickSight, or you need LDAP support for Linux applications.
 
 #### Other Directory Service Options
 
 - AD Connector: is a proxy service that provides an easy way to connect compatible AWS applications, such as Amazon WorkSpaces, Amazon QuickSight, and Amazon EC2 for Windows Server instances, to your existing on-premises Microsoft Active Directory. AD Connector is your best choice when you want to use your existing on-premises directory with compatible AWS services.
 
-- Simple AD: is a Microsoft Active Directory–compatible directory from AWS Directory Service that is powered by Samba 4. Simple AD is a standalone directory in the cloud, where you create and manage user identities and manage access to applications. Use Simple AD as a standalone directory in the cloud to support Windows workloads that need basic AD features, compatible AWS applications, or to support Linux workloads that need LDAP service.
+- Simple AD: is a Microsoft Active Directoryâ€“compatible directory from AWS Directory Service that is powered by Samba 4. Simple AD is a standalone directory in the cloud, where you create and manage user identities and manage access to applications. Use Simple AD as a standalone directory in the cloud to support Windows workloads that need basic AD features, compatible AWS applications, or to support Linux workloads that need LDAP service.
 
 - Amazon Cognito: is a user directory that adds sign-up and sign-in to your mobile app or web application using Amazon Cognito User Pools. 
 
@@ -1181,10 +1181,10 @@ AWS DataSync is an online data transfer service that simplifies, automates, and 
 - supports Network File System (NFS), Server Message Block (SMB), Amazon EFS, Amazon FSx for Windows File Server, and Amazon S3 as location types
 
 Main use cases for AWS DataSync:
-- Data migration – Move active datasets rapidly over the network into Amazon S3, Amazon EFS, or Amazon FSx for Windows File Server. DataSync includes automatic encryption and data integrity validation to help make sure that your data arrives securely, intact, and ready to use.
-- Data movement for timely in-cloud processing – Move data into or out of AWS for processing when working with systems that generate data on-premises. This approach can speed up critical hybrid cloud workflows across many industries. These include video production in media and entertainment, seismic research in oil and gas, machine learning in life science, and big data analytics in finance.
-- Data archiving – Move cold data from expensive on-premises storage systems directly to durable and secure long-term storage such as Amazon S3 Glacier or S3 Glacier Deep Archive. By doing this, you can free up on-premises storage capacity and shut down legacy storage systems.
-- Data protection – Move data into all Amazon S3 storage classes, and choose the most cost-effective storage class for your needs. You can also send the data to Amazon EFS or Amazon FSx for Windows File Server for a standby file system.
+- Data migration â€“ Move active datasets rapidly over the network into Amazon S3, Amazon EFS, or Amazon FSx for Windows File Server. DataSync includes automatic encryption and data integrity validation to help make sure that your data arrives securely, intact, and ready to use.
+- Data movement for timely in-cloud processing â€“ Move data into or out of AWS for processing when working with systems that generate data on-premises. This approach can speed up critical hybrid cloud workflows across many industries. These include video production in media and entertainment, seismic research in oil and gas, machine learning in life science, and big data analytics in finance.
+- Data archiving â€“ Move cold data from expensive on-premises storage systems directly to durable and secure long-term storage such as Amazon S3 Glacier or S3 Glacier Deep Archive. By doing this, you can free up on-premises storage capacity and shut down legacy storage systems.
+- Data protection â€“ Move data into all Amazon S3 storage classes, and choose the most cost-effective storage class for your needs. You can also send the data to Amazon EFS or Amazon FSx for Windows File Server for a standby file system.
 
 ### FSx for Windows File Server
 
@@ -1192,7 +1192,7 @@ Amazon FSx for Windows File Server provides fully managed, highly reliable, and 
 - single-AZ and multi-AZ deployment options
 - provides automatic durable backups
 - Easy file-level restores 
-- Amazon FSx provides two types of storage – Hard Disk Drives (HDD) and Solid State Drives (SSD)
+- Amazon FSx provides two types of storage â€“ Hard Disk Drives (HDD) and Solid State Drives (SSD)
 
 Use Cases
 - Home directories for users
@@ -1204,7 +1204,7 @@ Use Cases
 
 ---
 
-## Security Operations
+## Security-Operations
 
 ### AWS Secrets Manager
 
@@ -1234,9 +1234,9 @@ AWS provides AWS Shield Standard and AWS Shield Advanced for protection against 
 AWS WAF is a web application firewall that lets you monitor the HTTP(S) requests that are forwarded to an Amazon CloudFront distribution, an Amazon API Gateway REST API, or an Application Load Balancer. You can also use AWS WAF to protect your applications that are hosted in Amazon Elastic Container Service (Amazon ECS) containers.
 
 You use AWS WAF to control how an Amazon CloudFront distribution, an Amazon API Gateway REST API, or an Application Load Balancer responds to web requests.
-- Web ACLs – You use a web access control list (ACL) to protect a set of AWS resources. You create a web ACL and define its protection strategy by adding rules. Rules define criteria for inspecting web requests and specify how to handle requests that match the criteria. You set a default action for the web ACL that indicates whether to block or allow through those requests that pass the rules inspections.
-- Rules – Each rule contains a statement that defines the inspection criteria, and an action to take if a web request meets the criteria. When a web request meets the criteria, that's a match. You can use rules to block matching requests or to allow matching requests through. You can also use rules just to count matching requests.
-- Rules groups – You can use rules individually or in reusable rule groups. AWS Managed Rules and AWS Marketplace sellers provide managed rule groups for your use. You can also define your own rule groups.
+- Web ACLs â€“ You use a web access control list (ACL) to protect a set of AWS resources. You create a web ACL and define its protection strategy by adding rules. Rules define criteria for inspecting web requests and specify how to handle requests that match the criteria. You set a default action for the web ACL that indicates whether to block or allow through those requests that pass the rules inspections.
+- Rules â€“ Each rule contains a statement that defines the inspection criteria, and an action to take if a web request meets the criteria. When a web request meets the criteria, that's a match. You can use rules to block matching requests or to allow matching requests through. You can also use rules just to count matching requests.
+- Rules groups â€“ You can use rules individually or in reusable rule groups. AWS Managed Rules and AWS Marketplace sellers provide managed rule groups for your use. You can also define your own rule groups.
 
 A web access control list (web ACL) gives you fine-grained control over the web requests that your Amazon CloudFront distribution, Amazon API Gateway REST API, or Application Load Balancer responds to.
 
@@ -1287,7 +1287,7 @@ DynamoDB supports eventually consistent and strongly consistent reads.
 
 #### Partitions
 
-Amazon DynamoDB stores data in partitions. A partition is an allocation of storage for a table, backed by solid state drives (SSDs) and automatically replicated across multiple Availability Zones within an AWS Region. Partition management is handled entirely by DynamoDB—you never have to manage partitions yourself.
+Amazon DynamoDB stores data in partitions. A partition is an allocation of storage for a table, backed by solid state drives (SSDs) and automatically replicated across multiple Availability Zones within an AWS Region. Partition management is handled entirely by DynamoDBâ€”you never have to manage partitions yourself.
 
 ### In-Memory Acceleration with DynamoDB Accelerator (DAX)
 
