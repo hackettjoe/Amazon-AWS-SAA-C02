@@ -844,7 +844,9 @@ A launch configuration is an instance configuration template that an Auto Scalin
 
 ### Autoscaling Groups
 
-mazon EC2 Auto Scaling helps you ensure that you have the correct number of Amazon EC2 instances available to handle the load for your application. You create collections of EC2 instances, called Auto Scaling groups. You can specify the minimum number of instances in each Auto Scaling group, and Amazon EC2 Auto Scaling ensures that your group never goes below this size. 
+Amazon EC2 Auto Scaling helps you ensure that you have the correct number of Amazon EC2 instances available to handle the load for your application. You create collections of EC2 instances, called Auto Scaling groups. You can specify the minimum number of instances in each Auto Scaling group, and Amazon EC2 Auto Scaling ensures that your group never goes below this size. 
+
+![ASG Overview](https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/as-basic-diagram.png "ASG Arch")
 
 Key components:
 - Groups - EC2 instances are organized into groups so that they can be treated as a logical unit for the purposes of scaling and management
