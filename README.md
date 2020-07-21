@@ -944,6 +944,8 @@ Amazon API Gateway is an AWS service for creating, publishing, maintaining, moni
 
 Amazon Simple Notification Service (Amazon SNS) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients. In Amazon SNS, there are two types of clients—publishers and subscribers—also referred to as producers and consumers.
 
+![SNS Overview](https://docs.aws.amazon.com/sns/latest/dg/images/sns-how-works.png "SNS Arch")
+
 Common scenarios:
 1. Fanout - The "fanout" scenario is when an Amazon SNS message is sent to a topic and then replicated and pushed to multiple Amazon SQS queues, HTTP endpoints, or email addresses. 
 2. Application and system alerts - Application and system alerts are notifications that are triggered by predefined thresholds and sent to specified users by SMS and/or email.
