@@ -35,7 +35,6 @@ AWS has the concept of a Region, which is a physical location around the world w
 
 Names can be us-east-1 or eu-west-3 and include areas such as countries or states
 
-- Texas
 - North America
 - California
 - Singapore
@@ -265,6 +264,8 @@ Retrieval methods:
 - Standard (default): 12 hours
 - Bulk: 48 hours
 
+![s3 classes](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdocs.aws.amazon.com%2FAmazonS3%2Flatest%2Fuser-guide%2Fimages%2Fupload-set-properties.png&f=1&nofb=1)
+
 #### S3 Lifecycle Management
 
 To manage your objects so that they are stored cost effectively throughout their lifecycle, configure their Amazon S3 Lifecycle.
@@ -310,7 +311,7 @@ Use Cases:
 
 ## VPC
 
-### Networking Refresher
+![vpc](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2Fvpc%2Flatest%2Fuserguide%2Fimages%2Fdefault-vpc-diagram.png&f=1&nofb=1)
 
 #### Private IP Addressing
 
@@ -519,11 +520,13 @@ An instance store provides temporary block-level storage for your instance. This
   - The instance terminates
 - Therefore, do not rely on instance store for valuable, long-term data. Instead, use more durable data storage, such as Amazon S3, Amazon EBS, or Amazon EFS.
 - When you stop or terminate an instance, every block of storage in the instance store is reset. Therefore, your data cannot be accessed through the instance store of another instance.
-- **Instance Store have very high IOPS with millions of IOPS (read and write)**
+- **Instance Store has very performance with millions of IOPS (read and write)**
 
 ### EBS Snapshots
 
 You can back up the data on your Amazon EBS volumes to Amazon S3 by taking point-in-time snapshots. Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. When you delete a snapshot, only the data unique to that snapshot is removed. Each snapshot contains all of the information that is needed to restore your data (from the moment when the snapshot was taken) to a new EBS volume.
+
+![ebs snapshot](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAWSEC2%2Flatest%2FUserGuide%2Fimages%2Fsnapshot_1b.png&f=1&nofb=1)
 
 - EBS snapshots fully support EBS encryption.
 - Snapshots of encrypted volumes are automatically encrypted.
@@ -748,6 +751,8 @@ You can run your DB instance in several Availability Zones, an option called a M
 - Multi-AZ deployments for MariaDB, MySQL, Oracle, and PostgreSQL DB instances use Amazon's failover technology. SQL Server DB instances use SQL Server Database Mirroring (DBM) or Always On Availability Groups (AGs).
 - recommended to use Provisioned IOPS and DB instance classes that are optimized for Provisioned IOPS for fast, consistent performance
 
+![rds ha](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAmazonRDS%2Flatest%2FUserGuide%2Fimages%2Fcon-multi-AZ.png&f=1&nofb=1)
+
 ### RDS Backup and Restore
 
 RDS Backups
@@ -777,6 +782,8 @@ Amazon Aurora (Aurora) is a fully managed relational database engine that's comp
 #### Aurora Endpoints
 
 An endpoint is represented as an Aurora-specific URL that contains a host address and a port. The following types of endpoints are available from an Aurora DB cluster.
+
+![aurora endpoint](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAmazonRDS%2Flatest%2FAuroraUserGuide%2Fimages%2FAuroraLaunch04.png&f=1&nofb=1)
 
 Cluster endpoint
 - A cluster endpoint (or writer endpoint) for an Aurora DB cluster connects to the current primary DB instance for that DB cluster. This endpoint is the only one that can perform write operations such as DDL statements. Because of this, the cluster endpoint is the one that you connect to when you first set up a cluster or when your cluster only contains a single DB instance.
@@ -834,6 +841,8 @@ A listener checks for connection requests from clients, using the protocol and p
 
 Each target group routes requests to one or more registered targets, such as EC2 instances, using the protocol and port number that you specify. You can register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all targets registered to a target group that is specified in a listener rule for your load balancer.
 
+![elb overview](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2Felasticloadbalancing%2Flatest%2Fapplication%2Fimages%2Fcomponent_architecture.png&f=1&nofb=1)
+
 Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers.
 
 ### Application Load Balancer (ALB)
@@ -871,6 +880,8 @@ Key components:
 #### Scaling Policies
 
 A scaling policy instructs Amazon EC2 Auto Scaling to track a specific CloudWatch metric, and it defines what action to take when the associated CloudWatch alarm is in ALARM. When a scaling policy is executed, if the capacity calculation produces a number outside of the minimum and maximum size range of the group, Amazon EC2 Auto Scaling ensures that the new capacity never goes outside of the minimum and maximum size limits. Capacity is measured in one of two ways: using the same units that you chose when you set the desired capacity in terms of instances, or using capacity units. 
+
+![asg overview](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2Fautoscaling%2Fec2%2Fuserguide%2Fimages%2Fcooldowns-example-scaling-policy-diagram.png&f=1&nofb=1)
 
 - Target tracking scaling — Increase or decrease the current capacity of the group based on a target value for a specific metric. This is similar to the way that your thermostat maintains the temperature of your home—you select a temperature and the thermostat does the rest.
 - Step scaling — Increase or decrease the current capacity of the group based on a set of scaling adjustments, known as step adjustments, that vary based on the size of the alarm breach.
@@ -960,6 +971,8 @@ Amazon Simple Notification Service (Amazon SNS) is a web service that coordinate
 
 Common scenarios:
 1. Fanout - The "fanout" scenario is when an Amazon SNS message is sent to a topic and then replicated and pushed to multiple Amazon SQS queues, HTTP endpoints, or email addresses. 
+![sns fanout](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdocs.aws.amazon.com%2Fsns%2Flatest%2Fdg%2Fimages%2Fsns-fanout.png&f=1&nofb=1)
+
 2. Application and system alerts - Application and system alerts are notifications that are triggered by predefined thresholds and sent to specified users by SMS and/or email.
 3. Push email and text messaging - Push email and text messaging are two ways to transmit messages to individuals or groups via email and/or SMS. 
 4. Mobile push notifications - Mobile push notifications enable you to send messages directly to mobile apps.
