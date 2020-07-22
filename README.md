@@ -932,22 +932,22 @@ Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the appl
 
 #### CloudWatch Key Concepts
 
-**Namespaces**
+**Namespaces**<br>
 A namespace is a container for CloudWatch metrics. Metrics in different namespaces are isolated from each other, so that metrics from different applications are not mistakenly aggregated into the same statistics.
 
-**Metrics**
+**Metrics**<br>
 Metrics are the fundamental concept in CloudWatch. A metric represents a time-ordered set of data points that are published to CloudWatch.
 
-**Dimensions**
+**Dimensions**<br>
 A dimension is a name/value pair that is part of the identity of a metric. You can assign up to 10 dimensions to a metric.
 
-**Statistics**
+**Statistics**<br>
 Statistics are metric data aggregations over specified periods of time. CloudWatch provides statistics based on the metric data points provided by your custom data or provided by other AWS services to CloudWatch.
 
-**Percentiles**
+**Percentiles**<br>
 A percentile indicates the relative standing of a value in a dataset. For example, the 95th percentile means that 95 percent of the data is lower than this value and 5 percent of the data is higher than this value. Percentiles help you get a better understanding of the distribution of your metric data.
 
-**Alarms**
+**Alarms**<br>
 You can use an alarm to automatically initiate actions on your behalf. An alarm watches a single metric over a specified time period, and performs one or more specified actions, based on the value of the metric relative to a threshold over time. The action is a notification sent to an Amazon SNS topic or an Auto Scaling policy. You can also add alarms to dashboards.
 
 ### Application Programming Interface (API) Gateway
@@ -971,6 +971,7 @@ Amazon Simple Notification Service (Amazon SNS) is a web service that coordinate
 
 Common scenarios:
 1. Fanout - The "fanout" scenario is when an Amazon SNS message is sent to a topic and then replicated and pushed to multiple Amazon SQS queues, HTTP endpoints, or email addresses. 
+
 ![sns fanout](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdocs.aws.amazon.com%2Fsns%2Flatest%2Fdg%2Fimages%2Fsns-fanout.png&f=1&nofb=1)
 
 2. Application and system alerts - Application and system alerts are notifications that are triggered by predefined thresholds and sent to specified users by SMS and/or email.
