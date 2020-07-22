@@ -429,47 +429,49 @@ An elastic network interface is a logical networking component in a VPC that rep
 
 - Use this **awesome** tool: https://ec2instances.info/
 
-A1	General purpose\
-C4	Compute optimized\
-C5	Compute optimized\
-C5a	Compute optimized\
-C5d	Compute optimized\
-C5n	Compute optimized\
-C6g	Compute optimized\
-D2	Storage optimized\
-F1	Accelerated computing\
-G3	Accelerated computing\
-G4	Accelerated computing\
-H1	Storage optimized\
-I3	Storage optimized\
-I3en	Storage optimized\
-Inf1	Accelerated computing\
-M4	General purpose\
-M5	General purpose\
-M5a	General purpose\
-M5ad	General purpose\
-M5d	General purpose\
-M5dn	General purpose\
-M5n	General purpose\
-M6g	General purpose\
-P2	Accelerated computing\
-P3	Accelerated computing\
-P3dn	Accelerated computing\
-R4	Memory optimized\
-R5	Memory optimized\
-R5a	Memory optimized\
-R5ad	Memory optimized\
-R5d	Memory optimized\
-R5dn	Memory optimized\
-R5n	Memory optimized\
-R6g	Memory optimized\
-T2	General purpose\
-T3	General purpose\
-T3a	General purpose\
-u-xtb1	Memory optimized\
-X1	Memory optimized\
-X1e	Memory optimized\
-z1d	Memory optimized\
+First Header | Second Header
+------------ | -------------
+A1 | General purpose
+C4 |	Compute optimized
+C5 |	Compute optimized
+C5a |	Compute optimized
+C5d |	Compute optimized
+C5n |	Compute optimized
+C6g |	Compute optimized
+D2 |	Storage optimized
+F1 |	Accelerated computing
+G3 |	Accelerated computing
+G4 |	Accelerated computing
+H1 |	Storage optimized
+I3 |	Storage optimized
+I3en |	Storage optimized
+Inf1 |	Accelerated computing
+M4 |	General purpose
+M5 |	General purpose
+M5a |	General purpose
+M5ad |	General purpose
+M5d |	General purpose
+M5dn |	General purpose
+M5n |	General purpose
+M6g |	General purpose
+P2 |	Accelerated computing
+P3 |	Accelerated computing
+P3dn |	Accelerated computing
+R4 |	Memory optimized
+R5 |	Memory optimized
+R5a |	Memory optimized
+R5ad |	Memory optimized
+R5d |	Memory optimized
+R5dn |	Memory optimized
+R5n |	Memory optimized
+R6g |	Memory optimized
+T2 |	General purpose
+T3 |	General purpose
+T3a |	General purpose
+u-xtb1 |	Memory optimized
+X1 |	Memory optimized
+X1e |	Memory optimized
+z1d |	Memory optimized
 
 ## EC2 Storage
 
@@ -477,6 +479,8 @@ z1d	Memory optimized\
 
 Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with EC2 instances. EBS volumes behave like raw, unformatted block devices. You can mount these volumes as devices on your instances. EBS volumes that are attached to an instance are exposed as storage volumes that persist independently from the life of the instance. You can create a file system on top of these volumes, or use them in any way you would use a block device (such as a hard drive). You can dynamically change the configuration of a volume attached to an instance.
 - EBS volumes are created in a specific Availability Zone, and can then be attached to any instances in that same Availability Zone. To make a volume available outside of the Availability Zone, you can create a snapshot and restore that snapshot to a new volume anywhere in that Region. You can copy snapshots to other Regions and then restore them to new volumes there, making it easier to leverage multiple AWS Regions for geographical expansion, data center migration, and disaster recovery.
+
+![ec2 storage](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAWSEC2%2Flatest%2FUserGuide%2Fimages%2Farchitecture_storage.png&f=1&nofb=1)
 
 #### General Purpose SSD (gp2)
 
@@ -643,11 +647,17 @@ When you launch a new EC2 instance, the EC2 service attempts to place the instan
 1. Cluster – packs instances close together inside an Availability Zone. This strategy enables workloads to achieve the low-latency network performance necessary for tightly-coupled node-to-node communication that is typical of HPC applications.
 - Cluster placement groups are recommended for applications that benefit from low network latency, high network throughput, or both. They are also recommended when the majority of the network traffic is between the instances in the group.
 
+![cluster](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAWSEC2%2Flatest%2FUserGuide%2Fimages%2Fplacement-group-cluster.png&f=1&nofb=1)
+
 2. Partition – spreads your instances across logical partitions such that groups of instances in one partition do not share the underlying hardware with groups of instances in different partitions. This strategy is typically used by large distributed and replicated workloads, such as Hadoop, Cassandra, and Kafka.
 - Partition placement groups can be used to deploy large distributed and replicated workloads, such as HDFS, HBase, and Cassandra, across distinct racks.
 
+![partition](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAWSEC2%2Flatest%2FUserGuide%2Fimages%2Fplacement-group-partition.png&f=1&nofb=1)
+
 3. Spread – strictly places a small group of instances across distinct underlying hardware to reduce correlated failures.
 - Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other. 
+
+![spread](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdocs.aws.amazon.com%2FAWSEC2%2Flatest%2FUserGuide%2Fimages%2Fplacement-group-spread.png&f=1&nofb=1)
 
 ### Enhanced Networking
 
@@ -958,6 +968,8 @@ Common scenarios:
 ### Simple Queue Service (SQS)
 
 Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components. Amazon SQS offers common constructs such as dead-letter queues and cost allocation tags. It provides a generic web services API and it can be accessed by any programming language that the AWS SDK supports. Amazon SQS supports both standard and FIFO queues. 
+
+![sqs](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdocs.aws.amazon.com%2Fautoscaling%2Flatest%2Fuserguide%2Fimages%2Fsqs-as-workflow-diagram.png&f=1&nofb=1)
 
 Standard Queues
 - Unlimited throughput
