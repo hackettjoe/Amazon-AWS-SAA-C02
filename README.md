@@ -429,7 +429,7 @@ An elastic network interface is a logical networking component in a VPC that rep
 
 - Use this **awesome** tool: https://ec2instances.info/
 
-First Header | Second Header
+Instance ID | Purpose
 ------------ | -------------
 A1 | General purpose
 C4 |	Compute optimized
